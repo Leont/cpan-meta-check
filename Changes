@@ -1,6 +1,8 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+
+0.002     2012-04-05 01:05:34 Europe/Amsterdam
           Add explicit dependency on CPAN::Meta 2.120920
           Allow CPAN::Meta::Requirements instead of CPAN::Meta
 
