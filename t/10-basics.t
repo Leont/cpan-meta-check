@@ -11,6 +11,7 @@ use CPAN::Meta::Check qw/check_requirements verify_dependencies/;
 my %prereq_struct = (
 	runtime => {
 		requires => {
+			'Config'     => 0,
 			'File::Spec' => 0,
 			'IO::File'	 => 0,
 			'perl'			 => '5.005_03',
@@ -33,8 +34,8 @@ my $meta = CPAN::Meta->create({ prereqs => \%prereq_struct, version => 1, name =
 eq_or_diff([ verify_dependencies($meta, 'runtime', 'requires') ], [], 'Requirements are verified');
 
 my $pre_req = $meta->effective_prereqs->requirements_for('runtime', 'requires');
-is($pre_req->required_modules, 3, 'Requires 3 modules');
-eq_or_diff(check_requirements($pre_req, 'requires'), { map { ( $_ => undef ) } qw/File::Spec IO::File perl/ }, 'Requirements are satisfied ');
+is($pre_req->required_modules, 4, 'Requires 4 modules');
+eq_or_diff(check_requirements($pre_req, 'requires'), { map { ( $_ => undef ) } qw/Config File::Spec IO::File perl/ }, 'Requirements are satisfied ');
 
 my $pre_rec = $meta->effective_prereqs->requirements_for('runtime', 'recommends');
 eq_or_diff([ sort +$pre_rec->required_modules ], [ qw/Carp Pod::Text This::Should::Be::NonExistent/ ], 'The right recommendations are present');
