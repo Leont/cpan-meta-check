@@ -84,7 +84,7 @@ __END__
 
 =head1 DESCRIPTION
 
-This module verifies if modules are 
+This module verifies if requirements described in a CPAN::Meta object are present.
 
 =func check_requirements($reqs, $type)
 
@@ -98,3 +98,12 @@ Check all requirements in C<$meta> for phases C<$phases> and types C<$types>. Mo
 
 This function returns a unified L<CPAN::Meta::Requirements|CPAN::Meta::Requirements> object for all C<$type> requirements for C<$phases>. $phases may be either one (scalar) value or an arrayref of valid values as defined by the L<CPAN::Meta spec|CPAN::Meta::Spec>. C<$type> must be a a relationship as defined by the same spec. Modules are searched for in C<@$incdirs>, defaulting to C<@INC>.
 
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Test::CheckDeps|Test::CheckDeps>
+
+=item * L<CPAN::Meta|CPAN::Meta>
+
+=back
