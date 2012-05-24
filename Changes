@@ -1,6 +1,8 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+
+0.004     2012-05-24 21:35:08 Europe/Amsterdam
           Depend on recent enough CPAN::Meta
 
 0.003     2012-05-09 20:48:01 Europe/Amsterdam
