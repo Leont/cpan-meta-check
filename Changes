@@ -1,6 +1,7 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+          Depend on recent enough CPAN::Meta
 
 0.003     2012-05-09 20:48:01 Europe/Amsterdam
           Allow explicit setting of the include dir
