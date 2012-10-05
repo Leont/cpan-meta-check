@@ -5,7 +5,7 @@ use warnings;
 use Test::More 0.88;
 use Test::Differences;
 
-use CPAN::Meta;
+use CPAN::Meta 2.120920;
 use CPAN::Meta::Check qw/check_requirements verify_dependencies/;
 
 my %prereq_struct = (
