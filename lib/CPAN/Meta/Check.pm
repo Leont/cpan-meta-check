@@ -88,7 +88,7 @@ This module verifies if requirements described in a CPAN::Meta object are presen
 
 =func check_requirements($reqs, $type)
 
-This function checks if all dependencies in C<$reqs> (a L<CPAN::Meta::Requirements|CPAN::Meta::Requirements> object) are met, taking into account that 'conflicts' dependencies have to be checked in reverse. It returns a hash with the modules as values and any problems as keys, the value for a succesfully found module will be undef.
+This function checks if all dependencies in C<$reqs> (a L<CPAN::Meta::Requirements|CPAN::Meta::Requirements> object) are met, taking into account that 'conflicts' dependencies have to be checked in reverse. It returns a hash with the modules as values and any problems as keys, the value for a successfully found module will be undef.
 
 =func verify_dependencies($meta, $phases, $types, $incdirs)
 
@@ -96,7 +96,7 @@ Check all requirements in C<$meta> for phases C<$phases> and types C<$types>. Mo
 
 =func requirements_for($meta, $phases, $types, incdirs)
 
-This function returns a unified L<CPAN::Meta::Requirements|CPAN::Meta::Requirements> object for all C<$type> requirements for C<$phases>. $phases may be either one (scalar) value or an arrayref of valid values as defined by the L<CPAN::Meta spec|CPAN::Meta::Spec>. C<$type> must be a a relationship as defined by the same spec. Modules are searched for in C<@$incdirs>, defaulting to C<@INC>.
+This function returns a unified L<CPAN::Meta::Requirements|CPAN::Meta::Requirements> object for all C<$type> requirements for C<$phases>. $phases may be either one (scalar) value or an arrayref of valid values as defined by the L<CPAN::Meta spec|CPAN::Meta::Spec>. C<$type> must be a relationship as defined by the same spec. Modules are searched for in C<@$incdirs>, defaulting to C<@INC>.
 
 =head1 SEE ALSO
 
