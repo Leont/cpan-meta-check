@@ -88,7 +88,7 @@ This module verifies if requirements described in a CPAN::Meta object are presen
 
 =func check_requirements($reqs, $type)
 
-This function checks if all dependencies in C<$reqs> (a L<CPAN::Meta::Requirements|CPAN::Meta::Requirements> object) are met, taking into account that 'conflicts' dependencies have to be checked in reverse. It returns a hash with the modules as values and any problems as keys, the value for a successfully found module will be undef.
+This function checks if all dependencies in C<$reqs> (a L<CPAN::Meta::Requirements|CPAN::Meta::Requirements> object) are met, taking into account that 'conflicts' dependencies have to be checked in reverse. It returns a hash with the modules as keys and any problems as values; the value for a successfully found module will be undef.
 
 =func verify_dependencies($meta, $phases, $types, $incdirs)
 
