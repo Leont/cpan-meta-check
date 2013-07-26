@@ -21,6 +21,9 @@ my %prereq_struct = (
 			'This::Should::Be::NonExistent' => 1,
 			Carp => 99999,
 		},
+		conflicts => {
+			'CPAN::Meta' => '<= 100.0',
+    },
 	},
 	build => {
 		requires => {
@@ -44,6 +47,12 @@ cmp_deeply(check_requirements($pre_rec, 'recommends'), {
 		'Pod::Text' => undef,
 		'This::Should::Be::NonExistent' => 'Module \'This::Should::Be::NonExistent\' is not installed',
 	}, 'Recommendations give the right errors');
+
+my $pre_con = $meta->effective_prereqs->requirements_for('runtime', 'conflicts');
+cmp_deeply([ sort +$pre_con->required_modules ], [ qw/CPAN::Meta/ ], 'The right conflicts are present');
+cmp_deeply(check_requirements($pre_con, 'conflicts'), {
+		'CPAN::Meta' => "Installed version ($CPAN::Meta::VERSION) of CPAN::Meta is in range '<= 100.0'",
+	}, 'Conflicts give the right errors');
 
 done_testing();
 # vi:noet:sts=2:sw=2:ts=2
