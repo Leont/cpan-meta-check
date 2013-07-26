@@ -29,7 +29,7 @@ sub _check_conflict {
 	return if not defined $metadata;
 	my $version = eval { $metadata->version };
 	return "Missing version info for module '$module'" if not $version;
-	return sprintf 'Installed version (%s) of %s is in range \'%s\'', $version, $module, $$reqs->requirements_for_module($module) if $reqs->accepts_module($module, $version);
+	return sprintf 'Installed version (%s) of %s is in range \'%s\'', $version, $module, $reqs->requirements_for_module($module) if $reqs->accepts_module($module, $version);
 	return;
 }
 
