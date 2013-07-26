@@ -29,7 +29,7 @@ sub _check_conflict {
 	return if not defined $metadata;
 	my $version = eval { $metadata->version };
 	return "Missing version info for module '$module'" if not $version;
-	return sprintf 'Installed version (%s) of %s is in range \'%s\'', $version, $module, $$reqs->requirements_for_module($module) if $reqs->accepts_module($module, $version);
+	return sprintf 'Installed version (%s) of %s is in range \'%s\'', $version, $module, $reqs->requirements_for_module($module) if $reqs->accepts_module($module, $version);
 	return;
 }
 
@@ -72,6 +72,7 @@ sub verify_dependencies {
 	return grep { defined } values %{ $issues };
 }
 
+# vi:noet:sts=2:sw=2:ts=2
 1;
 
 #ABSTRACT: Verify requirements in a CPAN::Meta object

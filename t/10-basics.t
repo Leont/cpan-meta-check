@@ -21,6 +21,12 @@ my %prereq_struct = (
 			'This::Should::Be::NonExistent' => 1,
 			Carp => 99999,
 		},
+		conflicts => {
+			'CPAN::Meta' => '<= 100.0',										# check should fail
+			'Test::More' => '== ' . Test::More->VERSION,	# check should fail
+			'Test::Deep' => '<= 0.01',										# check should pass (up to 0.01 is bad)
+
+    },
 	},
 	build => {
 		requires => {
@@ -39,6 +45,19 @@ cmp_deeply(check_requirements($pre_req, 'requires'), { map { ( $_ => undef ) } q
 
 my $pre_rec = $meta->effective_prereqs->requirements_for('runtime', 'recommends');
 cmp_deeply([ sort +$pre_rec->required_modules ], [ qw/Carp Pod::Text This::Should::Be::NonExistent/ ], 'The right recommendations are present');
-cmp_deeply(check_requirements($pre_rec, 'recommends'), { Carp => "Installed version ($Carp::VERSION) of Carp is not in range '99999'", 'Pod::Text' => undef, 'This::Should::Be::NonExistent' => 'Module \'This::Should::Be::NonExistent\' is not installed' }, 'Recommendations give the right errors');
+cmp_deeply(check_requirements($pre_rec, 'recommends'), {
+		Carp => "Installed version ($Carp::VERSION) of Carp is not in range '99999'",
+		'Pod::Text' => undef,
+		'This::Should::Be::NonExistent' => 'Module \'This::Should::Be::NonExistent\' is not installed',
+	}, 'Recommendations give the right errors');
+
+my $pre_con = $meta->effective_prereqs->requirements_for('runtime', 'conflicts');
+cmp_deeply([ sort +$pre_con->required_modules ], [ qw/CPAN::Meta Test::Deep Test::More/ ], 'The right conflicts are present');
+cmp_deeply(check_requirements($pre_con, 'conflicts'), {
+		'CPAN::Meta' => "Installed version ($CPAN::Meta::VERSION) of CPAN::Meta is in range '<= 100.0'",
+		'Test::More' => "Installed version ($Test::More::VERSION) of Test::More is in range '== $Test::More::VERSION'",
+		'Test::Deep' => undef,
+	}, 'Conflicts give the right errors');
 
 done_testing();
+# vi:noet:sts=2:sw=2:ts=2

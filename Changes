@@ -1,6 +1,7 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+          Fixed bad dereference during conflicts checking
 
 0.005     2013-04-22 17:27:50 Europe/Amsterdam
           Converted from Test::Differences to Test::Deep
