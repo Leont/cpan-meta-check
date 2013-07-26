@@ -72,6 +72,7 @@ sub verify_dependencies {
 	return grep { defined } values %{ $issues };
 }
 
+# vi:noet:sts=2:sw=2:ts=2
 1;
 
 #ABSTRACT: Verify requirements in a CPAN::Meta object
