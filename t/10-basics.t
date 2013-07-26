@@ -39,7 +39,11 @@ cmp_deeply(check_requirements($pre_req, 'requires'), { map { ( $_ => undef ) } q
 
 my $pre_rec = $meta->effective_prereqs->requirements_for('runtime', 'recommends');
 cmp_deeply([ sort +$pre_rec->required_modules ], [ qw/Carp Pod::Text This::Should::Be::NonExistent/ ], 'The right recommendations are present');
-cmp_deeply(check_requirements($pre_rec, 'recommends'), { Carp => "Installed version ($Carp::VERSION) of Carp is not in range '99999'", 'Pod::Text' => undef, 'This::Should::Be::NonExistent' => 'Module \'This::Should::Be::NonExistent\' is not installed' }, 'Recommendations give the right errors');
+cmp_deeply(check_requirements($pre_rec, 'recommends'), {
+		Carp => "Installed version ($Carp::VERSION) of Carp is not in range '99999'",
+		'Pod::Text' => undef,
+		'This::Should::Be::NonExistent' => 'Module \'This::Should::Be::NonExistent\' is not installed',
+	}, 'Recommendations give the right errors');
 
 done_testing();
 # vi:noet:sts=2:sw=2:ts=2
