@@ -23,6 +23,7 @@ my %prereq_struct = (
 		},
 		conflicts => {
 			'CPAN::Meta' => '<= 100.0',
+			'Test::More' => Test::More->VERSION,
     },
 	},
 	build => {
@@ -49,9 +50,10 @@ cmp_deeply(check_requirements($pre_rec, 'recommends'), {
 	}, 'Recommendations give the right errors');
 
 my $pre_con = $meta->effective_prereqs->requirements_for('runtime', 'conflicts');
-cmp_deeply([ sort +$pre_con->required_modules ], [ qw/CPAN::Meta/ ], 'The right conflicts are present');
+cmp_deeply([ sort +$pre_con->required_modules ], [ qw/CPAN::Meta Test::More/ ], 'The right conflicts are present');
 cmp_deeply(check_requirements($pre_con, 'conflicts'), {
 		'CPAN::Meta' => "Installed version ($CPAN::Meta::VERSION) of CPAN::Meta is in range '<= 100.0'",
+		'Test::More' => "Installed version ($Test::More::VERSION) of Test::More is in range '$Test::More::VERSION'",
 	}, 'Conflicts give the right errors');
 
 done_testing();
