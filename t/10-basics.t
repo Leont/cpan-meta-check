@@ -23,9 +23,8 @@ my %prereq_struct = (
 		},
 		conflicts => {
 			'CPAN::Meta' => '<= 100.0',										# check should fail
-			'Test::More' => '== ' . Test::More->VERSION,	# check should fail
-			'Test::Deep' => '<= 0.01',										# check should pass (up to 0.01 is bad)
-
+			'Test::Deep' => '== ' . Test::Deep->VERSION,	# check should fail
+			'Test::More' => '<= 0.01',										# check should pass (up to 0.01 is bad)
     },
 	},
 	build => {
@@ -54,9 +53,9 @@ cmp_deeply(check_requirements($pre_rec, 'recommends'), {
 my $pre_con = $meta->effective_prereqs->requirements_for('runtime', 'conflicts');
 cmp_deeply([ sort +$pre_con->required_modules ], [ qw/CPAN::Meta Test::Deep Test::More/ ], 'The right conflicts are present');
 cmp_deeply(check_requirements($pre_con, 'conflicts'), {
-		'CPAN::Meta' => "Installed version ($CPAN::Meta::VERSION) of CPAN::Meta is in range '<= 100.0'",
-		'Test::More' => "Installed version ($Test::More::VERSION) of Test::More is in range '== $Test::More::VERSION'",
-		'Test::Deep' => undef,
+		'CPAN::Meta' => sprintf("Installed version (%.6f) of CPAN::Meta is in range '<= 100.0'", $CPAN::Meta::VERSION),
+		'Test::More' => undef,
+		'Test::Deep' => sprintf("Installed version (%.3f) of Test::Deep is in range '== $Test::Deep::VERSION'", $Test::Deep::VERSION),
 	}, 'Conflicts give the right errors');
 
 done_testing();

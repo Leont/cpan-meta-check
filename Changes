@@ -1,6 +1,7 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+          Swap conflicts test, as underscore versions broke it
 
 0.006     2013-07-27 00:24:21 Europe/Amsterdam
           Fixed bad dereference during conflicts checking
