@@ -1,6 +1,7 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+          Document $incdirs in the right function
 
 0.007     2013-07-31 14:37:58 Europe/Amsterdam
           Swap conflicts test, as underscore versions broke it
