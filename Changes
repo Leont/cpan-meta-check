@@ -1,6 +1,8 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+
+0.008     2013-10-17 16:44:57 Europe/Amsterdam
           Switch to using merged_requirements
           Test Env instead of Carp for version overshoot [#89591]
           Document $incdirs in the right function
