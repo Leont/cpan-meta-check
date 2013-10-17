@@ -8,6 +8,8 @@ use Test::Deep;
 use CPAN::Meta 2.120920;
 use CPAN::Meta::Check qw/check_requirements verify_dependencies/;
 
+use Env ();
+
 my %prereq_struct = (
 	runtime => {
 		requires => {
@@ -19,7 +21,7 @@ my %prereq_struct = (
 		recommends => {
 			'Pod::Text' => 0,
 			'This::Should::Be::NonExistent' => 1,
-			Carp => 99999,
+			Env => 99999,
 		},
 		conflicts => {
 			'CPAN::Meta' => '<= 100.0',										# check should fail
@@ -43,9 +45,9 @@ is($pre_req->required_modules, 4, 'Requires 4 modules');
 cmp_deeply(check_requirements($pre_req, 'requires'), { map { ( $_ => undef ) } qw/Config File::Spec IO::File perl/ }, 'Requirements are satisfied ');
 
 my $pre_rec = $meta->effective_prereqs->requirements_for('runtime', 'recommends');
-cmp_deeply([ sort +$pre_rec->required_modules ], [ qw/Carp Pod::Text This::Should::Be::NonExistent/ ], 'The right recommendations are present');
+cmp_deeply([ sort +$pre_rec->required_modules ], [ qw/Env Pod::Text This::Should::Be::NonExistent/ ], 'The right recommendations are present');
 cmp_deeply(check_requirements($pre_rec, 'recommends'), {
-		Carp => "Installed version ($Carp::VERSION) of Carp is not in range '99999'",
+		Env => "Installed version ($Env::VERSION) of Env is not in range '99999'",
 		'Pod::Text' => undef,
 		'This::Should::Be::NonExistent' => 'Module \'This::Should::Be::NonExistent\' is not installed',
 	}, 'Recommendations give the right errors');
