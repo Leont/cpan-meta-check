@@ -36,16 +36,7 @@ sub _check_conflict {
 sub requirements_for {
 	my ($meta, $phases, $type) = @_;
 	my $prereqs = ref($meta) eq 'CPAN::Meta' ? $meta->effective_prereqs : $meta;
-	if (!ref $phases) {
-		return $prereqs->requirements_for($phases, $type);
-	}
-	else {
-		my $ret = CPAN::Meta::Requirements->new;
-		for my $phase (@{ $phases }) {
-			$ret->add_requirements($prereqs->requirements_for($phase, $type));
-		}
-		return $ret;
-	}
+	return $prereqs->merged_requirements(ref($phases) ? $phases : [ $phases ], [ $type ]);
 }
 
 sub check_requirements {
@@ -93,11 +84,13 @@ This function checks if all dependencies in C<$reqs> (a L<CPAN::Meta::Requiremen
 
 =func verify_dependencies($meta, $phases, $types, $incdirs)
 
-Check all requirements in C<$meta> for phases C<$phases> and types C<$types>. Modules are searched for in C<@$incdirs>, defaulting to C<@INC>.
+Check all requirements in C<$meta> for phases C<$phases> and types C<$types>. Modules are searched for in C<@$incdirs>, defaulting to C<@INC>. C<$meta> should be a L<CPAN::Meta::Prereqs> or L<CPAN::Meta> object.
 
 =func requirements_for($meta, $phases, $types)
 
-This function returns a unified L<CPAN::Meta::Requirements|CPAN::Meta::Requirements> object for all C<$type> requirements for C<$phases>. $phases may be either one (scalar) value or an arrayref of valid values as defined by the L<CPAN::Meta spec|CPAN::Meta::Spec>. C<$type> must be a relationship as defined by the same spec.
+B<< This function is deprecated and may be removed at some point in the future, please use CPAN::Meta::Prereqs->merged_requirements instead. >>
+
+This function returns a unified L<CPAN::Meta::Requirements|CPAN::Meta::Requirements> object for all C<$type> requirements for C<$phases>. C<$phases> may be either one (scalar) value or an arrayref of valid values as defined by the L<CPAN::Meta spec|CPAN::Meta::Spec>. C<$type> must be a relationship as defined by the same spec. C<$meta> should be a L<CPAN::Meta::Prereqs> or L<CPAN::Meta> object.
 
 =head1 SEE ALSO
 
