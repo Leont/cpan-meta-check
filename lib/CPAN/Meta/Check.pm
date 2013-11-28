@@ -101,3 +101,6 @@ This function returns a unified L<CPAN::Meta::Requirements|CPAN::Meta::Requireme
 =item * L<CPAN::Meta|CPAN::Meta>
 
 =back
+
+=cut
+# vim: set ts=2 sw=2 noet nolist :
