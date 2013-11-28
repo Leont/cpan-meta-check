@@ -9,6 +9,7 @@ our %EXPORT_TAGS = (all => [ @EXPORT, @EXPORT_OK ] );
 
 use CPAN::Meta::Requirements 2.120920;
 use Module::Metadata;
+use Try::Tiny;
 
 sub _check_dep {
 	my ($reqs, $module, $dirs) = @_;
@@ -16,7 +17,8 @@ sub _check_dep {
 	my $version = $module eq 'perl' ? $] : do { 
 		my $metadata = Module::Metadata->new_from_module($module, inc => $dirs);
 		return "Module '$module' is not installed" if not defined $metadata;
-		eval { $metadata->version };
+		try { $metadata->version }
+		catch { warn "could not extract version for $module: $_" };
 	};
 	return "Missing version info for module '$module'" if $reqs->requirements_for_module($module) and not $version;
 	return sprintf 'Installed version (%s) of %s is not in range \'%s\'', $version, $module, $reqs->requirements_for_module($module) if not $reqs->accepts_module($module, $version || 0);
