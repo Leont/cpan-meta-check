@@ -13,11 +13,11 @@ use Module::Metadata;
 sub _check_dep {
 	my ($reqs, $module, $dirs) = @_;
 
-	my $version = $module eq 'perl' ? $] : do { 
-		my $metadata = Module::Metadata->new_from_module($module, inc => $dirs);
-		return "Module '$module' is not installed" if not defined $metadata;
-		eval { $metadata->version };
-	};
+	$module eq 'perl' and return ($reqs->accepts_module($module, $]) ? () : sprintf "Your Perl (%s) is not in the range '%s'", $], $reqs->requirements_for_module($module));
+
+	my $metadata = Module::Metadata->new_from_module($module, inc => $dirs);
+	return "Module '$module' is not installed" if not defined $metadata;
+	my $version = eval { $metadata->version };
 	return "Missing version info for module '$module'" if $reqs->requirements_for_module($module) and not $version;
 	return sprintf 'Installed version (%s) of %s is not in range \'%s\'', $version, $module, $reqs->requirements_for_module($module) if not $reqs->accepts_module($module, $version || 0);
 	return;
