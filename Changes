@@ -1,6 +1,8 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+
+0.009     2014-06-20 19:37:43+02:00 Europe/Amsterdam
           Various POD fixes
 
 0.008     2013-10-17 16:44:57 Europe/Amsterdam
