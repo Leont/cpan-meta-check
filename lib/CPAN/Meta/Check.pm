@@ -72,7 +72,7 @@ __END__
 
 =head1 SYNOPSIS
 
- warn "$_\n" for verify_requirements($meta, [qw/runtime build test/], 'requires');
+ warn "$_\n" for verify_dependencies($meta, [qw/runtime build test/], 'requires');
 
 =head1 DESCRIPTION
 
@@ -84,7 +84,7 @@ This function checks if all dependencies in C<$reqs> (a L<CPAN::Meta::Requiremen
 
 =func verify_dependencies($meta, $phases, $types, $incdirs)
 
-Check all requirements in C<$meta> for phases C<$phases> and types C<$types>. Modules are searched for in C<@$incdirs>, defaulting to C<@INC>. C<$meta> should be a L<CPAN::Meta::Prereqs> or L<CPAN::Meta> object.
+Check all requirements in C<$meta> for phases C<$phases> and type C<$type>. Modules are searched for in C<@$incdirs>, defaulting to C<@INC>. C<$meta> should be a L<CPAN::Meta::Prereqs> or L<CPAN::Meta> object.
 
 =func requirements_for($meta, $phases, $types)
 
