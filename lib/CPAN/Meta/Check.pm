@@ -7,7 +7,7 @@ our @EXPORT = qw//;
 our @EXPORT_OK = qw/check_requirements requirements_for verify_dependencies/;
 our %EXPORT_TAGS = (all => [ @EXPORT, @EXPORT_OK ] );
 
-use CPAN::Meta::Requirements 2.120920;
+use CPAN::Meta::Requirements;
 use Module::Metadata;
 
 sub _check_dep {
