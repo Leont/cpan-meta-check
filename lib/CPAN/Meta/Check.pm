@@ -43,7 +43,7 @@ sub check_requirements {
 	my ($reqs, $type, $dirs) = @_;
 
 	my %ret;
-	if ($type ne 'conflicts') {
+	if (($type||'runtime') ne 'conflicts') {
 		for my $module ($reqs->required_modules) {
 			$ret{$module} = _check_dep($reqs, $module, $dirs);
 		}
