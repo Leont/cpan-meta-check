@@ -63,7 +63,6 @@ sub verify_dependencies {
 	return grep { defined } values %{ $issues };
 }
 
-# vi:noet:sts=2:sw=2:ts=2
 1;
 
 #ABSTRACT: Verify requirements in a CPAN::Meta object
@@ -99,5 +98,8 @@ This function returns a unified L<CPAN::Meta::Requirements|CPAN::Meta::Requireme
 =item * L<Test::CheckDeps|Test::CheckDeps>
 
 =item * L<CPAN::Meta|CPAN::Meta>
+
+=for comment
+# vi:noet:sts=2:sw=2:ts=2
 
 =back
