@@ -42,18 +42,13 @@ sub requirements_for {
 sub check_requirements {
 	my ($reqs, $type, $dirs) = @_;
 
-	my %ret;
-	if ($type ne 'conflicts') {
-		for my $module ($reqs->required_modules) {
-			$ret{$module} = _check_dep($reqs, $module, $dirs);
-		}
-	}
-	else {
-		for my $module ($reqs->required_modules) {
-			$ret{$module} = _check_conflict($reqs, $module, $dirs);
-		}
-	}
-	return \%ret;
+	return +{
+		map {
+			$_ => $type ne 'conflicts'
+				? _check_dep($reqs, $_, $dirs)
+				: _check_conflict($reqs, $_, $dirs)
+		} $reqs->required_modules
+	};
 }
 
 sub verify_dependencies {
