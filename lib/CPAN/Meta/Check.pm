@@ -45,8 +45,8 @@ sub check_requirements {
 	return +{
 		map {
 			$_ => $type ne 'conflicts'
-				? _check_dep($reqs, $_, $dirs)
-				: _check_conflict($reqs, $_, $dirs)
+				? scalar _check_dep($reqs, $_, $dirs)
+				: scalar _check_conflict($reqs, $_, $dirs)
 		} $reqs->required_modules
 	};
 }
