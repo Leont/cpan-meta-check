@@ -2,6 +2,7 @@ Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
           bump Module::Metdata prereq for $VERSION parsing (RT#101095)
+          Consistently require same version of CPAN::Meta::Requirements
 
 0.009     2014-06-20 19:37:43+02:00 Europe/Amsterdam
           Various POD fixes
