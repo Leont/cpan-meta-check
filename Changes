@@ -1,6 +1,8 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+
+0.011     2015-03-22 10:07:52+01:00 Europe/Amsterdam
           Declare the minimum version required for the "merged_requirements" interface
 
 0.010     2015-01-30 19:10:49+01:00 Europe/Amsterdam
