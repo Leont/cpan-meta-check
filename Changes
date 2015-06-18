@@ -1,6 +1,8 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+
+0.012     2015-06-18 23:20:54+02:00 Europe/Amsterdam
           Drop dependency on Exporter 5.57
 
 0.011     2015-03-22 10:07:52+01:00 Europe/Amsterdam
