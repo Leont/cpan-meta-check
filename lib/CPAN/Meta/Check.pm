@@ -3,7 +3,7 @@ package CPAN::Meta::Check;
 use strict;
 use warnings;
 
-use Exporter 5.57 'import';
+use base 'Exporter';
 our @EXPORT = qw//;
 our @EXPORT_OK = qw/check_requirements requirements_for verify_dependencies/;
 our %EXPORT_TAGS = (all => [ @EXPORT, @EXPORT_OK ] );

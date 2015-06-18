@@ -1,6 +1,7 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+          Drop dependency on Exporter 5.57
 
 0.011     2015-03-22 10:07:52+01:00 Europe/Amsterdam
           Declare the minimum version required for the "merged_requirements" interface
