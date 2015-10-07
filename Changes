@@ -9,7 +9,7 @@ Revision history for CPAN-Meta-Check
           Declare the minimum version required for the "merged_requirements" interface
 
 0.010     2015-01-30 19:10:49+01:00 Europe/Amsterdam
-          bump Module::Metdata prereq for $VERSION parsing (RT#101095)
+          bump Module::Metadata prereq for $VERSION parsing (RT#101095)
           Consistently require same version of CPAN::Meta::Requirements
 
 0.009     2014-06-20 19:37:43+02:00 Europe/Amsterdam
