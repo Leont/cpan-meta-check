@@ -1,6 +1,8 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+          - Undef versions are now passed through to CPAN::Meta::Requirements
+            for the check, rather than failing with "Missing version" errors.
 
 0.013     2016-07-20 22:26:07+02:00 Europe/Amsterdam
           Make tests more resilient against dev versions of dependencies
