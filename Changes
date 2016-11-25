@@ -1,6 +1,8 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+
+0.014     2016-11-25 13:09:01+01:00 Europe/Amsterdam
           - Undef versions are now passed through to CPAN::Meta::Requirements
             for the check, rather than failing with "Missing version" errors.
 
