@@ -1,4 +1,5 @@
 package CPAN::Meta::Check;
+# vi:noet:sts=2:sw=2:ts=2
 
 use strict;
 use warnings;
@@ -100,7 +101,6 @@ This function returns a unified L<CPAN::Meta::Requirements|CPAN::Meta::Requireme
 
 =item * L<CPAN::Meta|CPAN::Meta>
 
-=for comment
-# vi:noet:sts=2:sw=2:ts=2
-
 =back
+
+=cut
