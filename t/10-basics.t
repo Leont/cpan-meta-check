@@ -57,7 +57,7 @@ is_deeply([ sort +$pre_con->required_modules ], [ qw/CPAN::Meta Scalar::Util Tes
 is_deeply(check_requirements($pre_con, 'conflicts'), {
 		'CPAN::Meta' => "Installed version ($CPAN::Meta::VERSION) of CPAN::Meta is in range '<= 100.0'",
 		'Test::More' => undef,
-		'Scalar::Util' => "Installed version ($Scalar::Util::VERSION) of Scalar::Util is in range '== $Scalar::Util::VERSION'",
+		'Scalar::Util' => sprintf("Installed version (%s) of Scalar::Util is in range '== %s'", Scalar::Util->VERSION, Scalar::Util->VERSION),
 	}, 'Conflicts give the right errors');
 
 done_testing();
