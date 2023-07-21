@@ -1,6 +1,7 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+          - Move issue tracker to github
 
 0.017     2023-01-03 16:53:14+01:00 Europe/Amsterdam
           - Use Module::Metadata for more accurate testing
