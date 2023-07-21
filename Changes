@@ -1,6 +1,8 @@
 Revision history for CPAN-Meta-Check
 
 {{$NEXT}}
+
+0.018     2023-07-21 16:23:58+02:00 Europe/Brussels
           - Fix version requirement for CPAN::Meta::Prereqs
           - Move issue tracker to github
 
