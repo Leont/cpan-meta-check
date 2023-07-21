@@ -16,7 +16,7 @@ use Module::Metadata 1.000023;
 sub _check_dep {
 	my ($reqs, $module, $dirs) = @_;
 
-	$module eq 'perl' and return ($reqs->accepts_module($module, $]) ? () : sprintf "Your Perl (%s) is not in the range '%s'", $], $reqs->requirements_for_module($module));
+	return $reqs->accepts_module($module, $]) ? () : sprintf "Your Perl (%s) is not in the range '%s'", $], $reqs->requirements_for_module($module) if $module eq 'perl';
 
 	my $metadata = Module::Metadata->new_from_module($module, inc => $dirs);
 	return "Module '$module' is not installed" if not defined $metadata;
